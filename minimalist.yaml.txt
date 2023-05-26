@@ -1,0 +1,111 @@
+views:
+  - title: "Example View"
+    path: 0
+    icon: "mdi:flower"
+    cards:
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_welcome_scenes"
+            #triggers_update: input_boolean.minimalist_dropdown
+            variables:
+              ulm_card_welcome_scenes_collapse: input_boolean.minimalist_dropdown #OPTIONAl --> uncomment also entity or triggers_update
+              ulm_weather: "weather.forecast_greenhub"
+
+          - type: "custom:button-card"
+            template: card_title
+            name: Energy usage
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_graph
+                entity: sensor.energy
+                variables:
+                  ulm_card_graph_color: "var(--google-green)"
+                  ulm_card_graph_name: Electricity Usage
+                  ulm_card_graph_entity: sensor.energy
+                  ulm_card_graph_type: fill
+                  ulm_card_graph_hours: 24
+                  ulm_card_graph_group_by: interval
+                  ulm_card_graph_line_width: 5
+
+              - type: "vertical-stack"
+                cards:
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "can charge iphone x 50"
+                      ulm_card_script_icon: "mdi:battery"
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "can charge Tesla x 0.5"
+                      ulm_card_script_icon: "mdi:car"
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_graph
+                entity: sensor.water_sensor_water_meter_total
+                variables:
+                  ulm_card_graph_color: "var(--google-blue)"
+                  ulm_card_graph_name: Water Usage
+                  ulm_card_graph_entity: sensor.water_sensor_water_meter_total
+                  ulm_card_graph_type: fill
+                  ulm_card_graph_hours: 24
+                  ulm_card_graph_group_by: interval
+                  ulm_card_graph_line_width: 5
+
+              - type: "vertical-stack"
+                cards:
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "500mL watre bottle x 3"
+                      ulm_card_script_icon: "mdi:cup"
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "grow apple x 20g"
+                      ulm_card_script_icon: "mdi:apple"
+
+          - type: iframe
+            url: http://192.168.8.249/
+            aspect_ratio: 70%
+
+          - type: "custom:button-card"
+            template: card_title
+            name: Devices
+
+          - type: "custom:button-card"
+            template: "card_esh_welcome"
+            triggers_update: "input_boolean.minimalist_dropdown"
+            variables:
+              ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
+              ulm_weather: "weather.forecast_greenhub"
+              entity_1:
+                nav: "house"
+                icon: "mdi:home"
+                name: "House"
+                color: "blue"
+              entity_2:
+                nav: "lights"
+                icon: "mdi:lightbulb"
+                name: "Lights"
+                color: "yellow"
+              entity_3:
+                nav: "security"
+                icon: "mdi:shield"
+                name: Secure
+                color: "green"
+              entity_4:
+                nav: "network"
+                icon: "mdi:nas"
+                name: Lab
+                color: "purple"
+              entity_5:
+                nav: "network"
+                icon: "mdi:flask"
+                name: Lab
+                color: "red"
