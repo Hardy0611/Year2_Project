@@ -1,0 +1,451 @@
+---
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+
+title: "Minimalist"
+background: "transparent"
+views:
+  - title: "Main Page"
+    path: "main"
+    icon: "mdi:home"
+    cards:
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_esh_welcome"
+            triggers_update: "input_boolean.minimalist_dropdown"
+            variables:
+              ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
+              ulm_weather: "weather.forecast_greenhub"
+              entity_1:
+                nav: "main"
+                icon: "mdi:home"
+                name: "Main"
+                color: "blue"
+              entity_2:
+                nav: "room"
+                icon: "mdi:bed"
+                name: "Room"
+                color: "yellow"
+              entity_3:
+                nav: "toilet"
+                icon: "mdi:toilet"
+                name: "Toilet"
+                color: "green"
+              entity_4:
+                nav: "service"
+                icon: "mdi:menu"
+                name: "Service"
+                color: "purple"
+              entity_5:
+                nav: "all"
+                icon: "mdi:devices"
+                name: "All"
+                color: "red"
+
+          - type: "custom:button-card"
+            template: card_title
+            name: Energy usage
+
+          - type: iframe
+            url: http://192.168.8.249/
+            aspect_ratio: 50%
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_graph
+                entity: sensor.energy
+                variables:
+                  ulm_card_graph_color: "var(--google-green)"
+                  ulm_card_graph_name: Electricity Usage
+                  ulm_card_graph_entity: sensor.energy
+                  ulm_card_graph_type: fill
+                  ulm_card_graph_hours: 24
+                  ulm_card_graph_group_by: interval
+                  ulm_card_graph_line_width: 5
+
+              - type: "vertical-stack"
+                cards:
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "~iphone x 50"
+                      ulm_card_script_icon: "mdi:battery"
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "~Tesla x 0.5"
+                      ulm_card_script_icon: "mdi:car"
+
+          - type: "horizontal-stack"
+            cards:
+              - type: custom:fluid-level-background-card
+                card:
+                  type: glance
+                  entities:
+                    - entity: sensor.water_sensor_water_meter_total
+                entity: sensor.water_sensor_water_meter_total
+                fill_entity: sensor.water_sensor_water_meter_total
+                level_color:
+                  - 68
+                  - 115
+                  - 159
+
+              - type: "vertical-stack"
+                cards:
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "500mL bottle x 3"
+                      ulm_card_script_icon: "mdi:cup"
+                  - type: "custom:button-card"
+                    template: card_script
+                    variables:
+                      ulm_card_script_title: "apple x 20g"
+                      ulm_card_script_icon: "mdi:apple"
+
+  - title: "Room"
+    path: "room"
+    icon: "mdi:bed"
+    cards:
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_esh_welcome"
+            triggers_update: "input_boolean.minimalist_dropdown"
+            variables:
+              ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
+              ulm_weather: "weather.forecast_greenhub"
+              entity_1:
+                nav: "main"
+                icon: "mdi:home"
+                name: "Main"
+                color: "blue"
+              entity_2:
+                nav: "room"
+                icon: "mdi:bed"
+                name: "Room"
+                color: "yellow"
+              entity_3:
+                nav: "toilet"
+                icon: "mdi:toilet"
+                name: "Toilet"
+                color: "green"
+              entity_4:
+                nav: "service"
+                icon: "mdi:menu"
+                name: "Service"
+                color: "purple"
+              entity_5:
+                nav: "all"
+                icon: "mdi:devices"
+                name: "All"
+                color: "red"
+
+          - type: "custom:button-card"
+            template: card_title
+            name: Devices
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch1
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch2
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+          - type: "custom:button-card"
+            template: card_fan
+            entity: switch.ir5
+            variables:
+              ulm_card_fan_enable_slider: true
+              ulm_card_fan_color: "blue"
+              ulm_card_fan_force_background_color: true
+
+          - type: "custom:button-card"
+            template: card_media_player
+            entity: media_player.lab
+            variables:
+              ulm_card_media_player_name: GreenHub
+
+  - title: "Toilet"
+    path: "toilet"
+    icon: "mdi:toilet"
+    cards:
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_esh_welcome"
+            triggers_update: "input_boolean.minimalist_dropdown"
+            variables:
+              ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
+              ulm_weather: "weather.forecast_greenhub"
+              entity_1:
+                nav: "main"
+                icon: "mdi:home"
+                name: "Main"
+                color: "blue"
+              entity_2:
+                nav: "room"
+                icon: "mdi:bed"
+                name: "Room"
+                color: "yellow"
+              entity_3:
+                nav: "toilet"
+                icon: "mdi:toilet"
+                name: "Toilet"
+                color: "green"
+              entity_4:
+                nav: "service"
+                icon: "mdi:menu"
+                name: "Service"
+                color: "purple"
+              entity_5:
+                nav: "all"
+                icon: "mdi:devices"
+                name: "All"
+                color: "red"
+
+          - type: "custom:button-card"
+            template: card_title
+            name: Devices
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch3
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch4
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_fan
+                entity: switch.ir6
+                variables:
+                  ulm_card_fan_enable_slider: true
+                  ulm_card_fan_color: "blue"
+                  ulm_card_fan_force_background_color: true
+
+              - type: "custom:button-card"
+                template: card_fan
+                entity: switch.ir7
+                variables:
+                  ulm_card_fan_enable_slider: true
+                  ulm_card_fan_color: "blue"
+                  ulm_card_fan_force_background_color: true
+
+          - type: custom:fluid-level-background-card
+            card:
+              type: glance
+              entities:
+                - entity: sensor.water_sensor_water_meter_total
+            entity: sensor.water_sensor_water_meter_total
+            fill_entity: sensor.water_sensor_water_meter_total
+            level_color:
+              - 68
+              - 115
+              - 159
+
+  - title: "Service"
+    path: "service"
+    icon: "mdi:menu"
+    cards:
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_esh_welcome"
+            triggers_update: "input_boolean.minimalist_dropdown"
+            variables:
+              ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
+              ulm_weather: "weather.forecast_greenhub"
+              entity_1:
+                nav: "main"
+                icon: "mdi:home"
+                name: "Main"
+                color: "blue"
+              entity_2:
+                nav: "room"
+                icon: "mdi:bed"
+                name: "Room"
+                color: "yellow"
+              entity_3:
+                nav: "toilet"
+                icon: "mdi:toilet"
+                name: "Toilet"
+                color: "green"
+              entity_4:
+                nav: "service"
+                icon: "mdi:menu"
+                name: "Service"
+                color: "purple"
+              entity_5:
+                nav: "all"
+                icon: "mdi:devices"
+                name: "All"
+                color: "red"
+
+          - type: "custom:button-card"
+            template: card_script
+            variables:
+              ulm_card_script_title: cleaning
+              ulm_card_script_icon: "mdi:spray-bottle"
+            tap_action:
+              action: call-service
+              #service: script.turn_on
+              #service_data:
+              #  entity_id: script.romantic_livingroom_lights
+
+          - type: "custom:button-card"
+            template: card_script
+            variables:
+              ulm_card_script_title: food order
+              ulm_card_script_icon: "mdi:room-service"
+            tap_action:
+              action: call-service
+              #service: script.turn_on
+              #service_data:
+              #  entity_id: script.romantic_livingroom_lights
+
+          - type: "custom:button-card"
+            template: card_script
+            variables:
+              ulm_card_script_title: massage
+              ulm_card_script_icon: "mdi:doctor"
+            tap_action:
+              action: call-service
+              #service: script.turn_on
+              #service_data:
+              #  entity_id: script.romantic_livingroom_lights
+
+          - type: "custom:button-card"
+            template: card_script
+            variables:
+              ulm_card_script_title: reception
+              ulm_card_script_icon: "mdi:phone"
+            tap_action:
+              action: call-service
+              #service: script.turn_on
+              #service_data:
+              #  entity_id: script.romantic_livingroom_lights
+
+  - title: "All"
+    path: "all"
+    icon: "mdi:devices"
+    cards:
+      - type: "vertical-stack"
+        cards:
+          - type: "custom:button-card"
+            template: "card_esh_welcome"
+            triggers_update: "input_boolean.minimalist_dropdown"
+            variables:
+              ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
+              ulm_weather: "weather.forecast_greenhub"
+              entity_1:
+                nav: "main"
+                icon: "mdi:home"
+                name: "Main"
+                color: "blue"
+              entity_2:
+                nav: "room"
+                icon: "mdi:bed"
+                name: "Room"
+                color: "yellow"
+              entity_3:
+                nav: "toilet"
+                icon: "mdi:toilet"
+                name: "Toilet"
+                color: "green"
+              entity_4:
+                nav: "service"
+                icon: "mdi:menu"
+                name: "Service"
+                color: "purple"
+              entity_5:
+                nav: "all"
+                icon: "mdi:devices"
+                name: "All"
+                color: "red"
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch1
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch2
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch3
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+              - type: "custom:button-card"
+                template: card_light
+                entity: switch.switch4
+                variables:
+                  ulm_card_light_enable_slider: false
+                  ulm_card_light_enable_color: true
+                  ulm_card_light_force_background_color: true
+
+          - type: "horizontal-stack"
+            cards:
+              - type: "custom:button-card"
+                template: card_fan
+                entity: switch.ir6
+                variables:
+                  ulm_card_fan_enable_slider: true
+                  ulm_card_fan_color: "blue"
+                  ulm_card_fan_force_background_color: true
+
+              - type: "custom:button-card"
+                template: card_fan
+                entity: switch.ir7
+                variables:
+                  ulm_card_fan_enable_slider: true
+                  ulm_card_fan_color: "blue"
+                  ulm_card_fan_force_background_color: true
+
+          - type: "custom:button-card"
+            template: card_fan
+            entity: switch.ir5
+            variables:
+              ulm_card_fan_enable_slider: true
+              ulm_card_fan_color: "blue"
+              ulm_card_fan_force_background_color: true
